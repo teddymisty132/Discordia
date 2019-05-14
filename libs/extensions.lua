@@ -129,6 +129,16 @@ function table.slice(tbl, start, stop, step)
 	return ret
 end
 
+function table.bind(tbl, start)
+	local bindedArgs = {}
+	for index, value in pairs(tbl) do
+		if index >= start then
+			table.insert(bindedArgs, #bindedArgs + 1, value)
+		end
+	end
+	return table.concat(bindedArgs, " ")
+end	
+
 local string = {}
 
 function string.split(str, delim)
